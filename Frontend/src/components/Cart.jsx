@@ -52,7 +52,7 @@ const Cart = ({ data }) => {
                 typeof item.image === "string"
                   ? item.image
                   : item.image?.[0]?.path
-                  ? `http://localhost:3000/${item.image[0].path.replace(
+                  ? `https://internship-assignment-2-vfyp.onrender.com/${item.image[0].path.replace(
                       /\\/g,
                       "/"
                     )}`
@@ -99,7 +99,7 @@ const Cart = ({ data }) => {
                 typeof selectedItem.image === "string"
                   ? selectedItem.image
                   : selectedItem.image?.[0]?.path
-                  ? `http://localhost:3000/${selectedItem.image[0].path.replace(
+                  ? `https://internship-assignment-2-vfyp.onrender.com/${selectedItem.image[0].path.replace(
                       /\\/g,
                       "/"
                     )}`
