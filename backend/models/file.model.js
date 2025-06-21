@@ -19,7 +19,7 @@ const FileSchema = new mongoose.Schema({
     image : {
         type : [FileObjectSchema]
     },
-    addtionalImages : {
+    additionalImages : {
         type : [FileObjectSchema]
     }
 })

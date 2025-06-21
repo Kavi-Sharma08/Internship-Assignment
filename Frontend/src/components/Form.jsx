@@ -24,7 +24,7 @@ const Form = () => {
       formData.append('additionalImages', additionalFiles[i]);
     }
     try {
-      const res = await fetch('https://internship-assignment-2-vfyp.onrender.com/upload', {
+      const res = await fetch('http://localhost:3000/upload', {
         method: 'POST',
         body: formData,
       });
@@ -46,7 +46,7 @@ const Form = () => {
   
   return (
     <Container>
-        <form action="https://internship-assignment-2-vfyp.onrender.com/upload" onSubmit={handleForm} method='post' encType="multipart/form-data">
+        <form action="http://localhost:3000/upload" onSubmit={handleForm} method='post' encType="multipart/form-data">
             <div className='pt-12'>
                 <Input ref={nameRef} label = "Item Name" placeholder = "Item Name" className = "min-w-2.5"/>
                 <Input ref={typeRef} label = "Item type" placeholder = "Item Type" className = "min-w-2.5"/>

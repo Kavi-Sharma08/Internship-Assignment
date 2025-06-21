@@ -34,6 +34,12 @@ const Card = () => {
     
 
   }
+  const handleEnquire = async ()=>{
+    const res  = await fetch('http://localhost:3000/enquire');
+    const  data = await res.json();
+    toast(data)
+
+  }
   const visibleItems = dataItems.filter(
     card => !cartItems.find(cartItem => cartItem.id === card.id)
   );
@@ -127,7 +133,7 @@ const Card = () => {
             </p>
             <button
               className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition-colors"
-              onClick={() => alert('Enquire button clicked!')}
+              onClick={handleEnquire}
             >
               Enquire
             </button>

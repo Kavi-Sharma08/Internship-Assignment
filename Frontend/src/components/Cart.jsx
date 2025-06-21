@@ -6,6 +6,13 @@ import toast, { Toaster } from "react-hot-toast";
 const Cart = ({ data }) => {
   const dispatch = useDispatch();
   const [selectedItem, setSelectedItem] = useState(null);
+  const handleEnquire = async ()=>{
+    const res  = await fetch('http://localhost:3000/enquire');
+    const  data = await res.json();
+    console.log(data)
+    toast("Email is send")
+
+  }
   const removeTheItem = (item) => {
     dispatch(removeItem(item));
     toast("Item removed");
@@ -52,7 +59,7 @@ const Cart = ({ data }) => {
                 typeof item.image === "string"
                   ? item.image
                   : item.image?.[0]?.path
-                  ? `https://internship-assignment-2-vfyp.onrender.com/${item.image[0].path.replace(
+                  ? `http://localhost:3000/${item.image[0].path.replace(
                       /\\/g,
                       "/"
                     )}`
@@ -99,7 +106,7 @@ const Cart = ({ data }) => {
                 typeof selectedItem.image === "string"
                   ? selectedItem.image
                   : selectedItem.image?.[0]?.path
-                  ? `https://internship-assignment-2-vfyp.onrender.com/${selectedItem.image[0].path.replace(
+                  ? `http://localhost:3000/${selectedItem.image[0].path.replace(
                       /\\/g,
                       "/"
                     )}`
@@ -114,7 +121,16 @@ const Cart = ({ data }) => {
               {selectedItem.additionalImages?.map((img, index) => (
                 <img
                   key={index}
-                  src={img}
+                  src={
+                typeof selectedItem.image === "string"
+                  ? selectedItem.image
+                  : selectedItem.image?.[0]?.path
+                  ? `http://localhost:3000/${selectedItem.additionalImages[0].path.replace(
+                      /\\/g,
+                      "/"
+                    )}`
+                  : "fallback.jpg" 
+              }
                   alt={`${selectedItem.name} additional ${index + 1}`}
                   className="w-24 h-24 object-cover rounded-md"
                 />
@@ -128,7 +144,7 @@ const Cart = ({ data }) => {
             </p>
             <button
               className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition-colors"
-              onClick={() => alert("Enquire button clicked!")}
+              onClick={handleEnquire}
             >
               Enquire
             </button>
